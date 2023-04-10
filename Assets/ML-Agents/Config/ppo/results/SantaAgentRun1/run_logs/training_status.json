@@ -1,0 +1,38 @@
+{
+    "Santa": {
+        "checkpoints": [
+            {
+                "steps": 499992,
+                "file_path": "results\\SantaAgentRun1\\Santa\\Santa-499992.onnx",
+                "reward": null,
+                "creation_time": 1681076173.2878485,
+                "auxillary_file_paths": [
+                    "results\\SantaAgentRun1\\Santa\\Santa-499992.pt"
+                ]
+            },
+            {
+                "steps": 500760,
+                "file_path": "results\\SantaAgentRun1\\Santa\\Santa-500760.onnx",
+                "reward": null,
+                "creation_time": 1681076173.512719,
+                "auxillary_file_paths": [
+                    "results\\SantaAgentRun1\\Santa\\Santa-500760.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 500760,
+            "file_path": "results\\SantaAgentRun1\\Santa.onnx",
+            "reward": null,
+            "creation_time": 1681076173.512719,
+            "auxillary_file_paths": [
+                "results\\SantaAgentRun1\\Santa\\Santa-500760.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}

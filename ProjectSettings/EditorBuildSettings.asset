@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/SantaDefaultGroupTrainingScene.unity
+    guid: 0eac1b94d6aaf9f4490f296040c78bda
   m_configObjects: {}
