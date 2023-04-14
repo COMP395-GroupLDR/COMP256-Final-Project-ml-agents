@@ -22,16 +22,23 @@ public class SantaAgent : Agent
     public Transform sleighSpawnArea;
     public GameObject giftOnBag;
     public bool useVectorObs;
+    public TextMeshProUGUI giftCountText;
+    
+
+    
 
     [Header("Display")]
     public TextMeshProUGUI rewardText;
 
+    [SerializeField]
+    private bool isGameMode;
     private string giftTag;
     private string sleighTag;
     private List<GameObject> giftList;
     private bool hasGift;
     private int giftCount = 3;
     private int giftCollected = 0;
+    private int giftsOnGround = 0;
 
     // Start is called before the first frame update
     public override void Initialize()
@@ -60,7 +67,7 @@ public class SantaAgent : Agent
         PlaceBuggy();
         PlaceAgent();
         PlaceGifts(giftCount);
-        giftIconGroup.Init(giftCount);
+        //giftIconGroup.Init(giftCount);
     }
 
     private void ResetSleighContainer()
@@ -122,6 +129,7 @@ public class SantaAgent : Agent
             gift.transform.position = ChooseRandomPosition(giftSpawnArea.position, 0f, 360f, 0.5f, 4f);
             gift.transform.parent = area.transform;
             giftList.Add(gift);
+            giftsOnGround++;
         }
     }
 
@@ -132,6 +140,7 @@ public class SantaAgent : Agent
             EnableGiftOnBag(true);
             hasGift = true;
             giftCollected++;
+            giftsOnGround--;
             DisableGift(other.gameObject);
             sleighContainer.EnableIndicator(true);
             AddReward(collectGiftReward);
@@ -167,7 +176,9 @@ public class SantaAgent : Agent
 
     private void UpdateGiftCollectedDisplay()
     {
-        giftIconGroup.UpdateFilledCount(giftCollected);
+        //giftIconGroup.UpdateFilledCount(giftCollected);
+        giftCountText.text = giftCollected.ToString();
+
     }
 
     public override void OnActionReceived(ActionBuffers actions)
@@ -177,7 +188,15 @@ public class SantaAgent : Agent
 
         if (IsGameOver())
         {
-            EndEpisode();
+            if(isGameMode)
+            {
+                PlaceGifts(giftCount);
+            }
+            else
+            {
+                EndEpisode();
+            }
+            
         }
     }
 
@@ -209,7 +228,7 @@ public class SantaAgent : Agent
     private bool IsGameOver()
     {
         bool isGameOver = false;
-        if (giftList.Count == giftCollected && hasGift == false)
+        if (giftsOnGround == 0 && hasGift == false)
         {
             isGameOver = true;
         }
