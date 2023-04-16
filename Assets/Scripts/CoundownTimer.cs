@@ -26,6 +26,7 @@ public class CoundownTimer : MonoBehaviour
         {
             timeLeft = 0;
             timerLabel.text = "0:00";
+            GameStateHandler.Instance.EndGame();
         }
     }
 }

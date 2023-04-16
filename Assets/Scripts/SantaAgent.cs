@@ -23,9 +23,9 @@ public class SantaAgent : Agent
     public GameObject giftOnBag;
     public bool useVectorObs;
     public TextMeshProUGUI giftCountText;
-    
+    public int giftCollected = 0;
 
-    
+
 
     [Header("Display")]
     public TextMeshProUGUI rewardText;
@@ -37,7 +37,7 @@ public class SantaAgent : Agent
     private List<GameObject> giftList;
     private bool hasGift;
     private int giftCount = 3;
-    private int giftCollected = 0;
+
     private int giftsOnGround = 0;
 
     // Start is called before the first frame update
