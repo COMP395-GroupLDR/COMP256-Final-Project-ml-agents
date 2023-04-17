@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SantaDefaultGroupTrainingScene.unity
-    guid: 0eac1b94d6aaf9f4490f296040c78bda
+    path: Assets/Scenes/SantaGameplayScene.unity
+    guid: 03c364fbe49fed640b0e66b9f316718b
   m_configObjects: {}
