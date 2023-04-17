@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 0.01f ;
+    float moveSpeed;
     public float rotationSpeed = 150f;
     public float collectGiftReward = 0.5f;
     public float carryGiftToSleighReward = 1f;
@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private string giftTag;
     private string sleighTag;
-    public bool hasGift;
+    public bool hasGift = false;
 
     private SantaAgent santaAgent;
 
@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     {
         GetTags();
         santaAgent = GameObject.FindGameObjectWithTag("SantaAgent").GetComponent<SantaAgent>();
+        moveSpeed = 0.15f;
     }
 
     // Update is called once per frame
@@ -87,8 +88,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag(giftTag) && hasGift == false)
         {
             EnableGiftOnBag(true);
-            hasGift = true;
-            santaAgent.giftCollected++;
+            hasGift = true;            
             santaAgent.giftsOnGround--;
             DisableGift(other.gameObject);
             sleighContainer.EnableIndicator(true);
@@ -97,11 +97,12 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag(sleighTag) && hasGift == true)
         {
+            hasGift = false;
+            santaAgent.giftCollected++;
             UpdateGiftCollectedDisplay();
             sleighContainer.UpdateGiftCount(santaAgent.giftCollected);
             sleighContainer.EnableIndicator(false);
-            EnableGiftOnBag(false);
-            hasGift = false;
+            EnableGiftOnBag(false);            
             santaAgent.AddReward(carryGiftToSleighReward);
         }
     }

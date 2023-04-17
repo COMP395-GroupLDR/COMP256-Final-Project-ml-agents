@@ -48,6 +48,7 @@ public class SantaAgent : Agent
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         GetTags();
         giftList = new List<GameObject>();
+        
     }
 
     private void GetRandomGiftCount()
@@ -141,19 +142,19 @@ public class SantaAgent : Agent
         if (other.gameObject.CompareTag(giftTag) && hasGift == false)
         {
             EnableGiftOnBag(true);
-            hasGift = true;
-            giftCollected++;
+            hasGift = true;            
             giftsOnGround--;
             DisableGift(other.gameObject);
-            sleighContainer.EnableIndicator(true);
+            //sleighContainer.EnableIndicator(true);
             AddReward(collectGiftReward);
         }
 
         if (other.gameObject.CompareTag(sleighTag) && hasGift == true)
         {
+            giftCollected++;
             UpdateGiftCollectedDisplay();
             sleighContainer.UpdateGiftCount(giftCollected);
-            sleighContainer.EnableIndicator(false);
+            //sleighContainer.EnableIndicator(false);
             EnableGiftOnBag(false);
             hasGift = false;
             AddReward(carryGiftToSleighReward);
