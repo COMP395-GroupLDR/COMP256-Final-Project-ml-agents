@@ -38,11 +38,14 @@ public class SantaAgent : Agent
     private bool hasGift;
     private int giftCount = 3;
 
-    private int giftsOnGround = 0;
+    public int giftsOnGround = 0;
+
+    private PlayerController playerController;
 
     // Start is called before the first frame update
     public override void Initialize()
     {
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         GetTags();
         giftList = new List<GameObject>();
     }
@@ -171,6 +174,7 @@ public class SantaAgent : Agent
     {
         ResetArea();
         hasGift = false;
+        playerController.hasGift = false;
         giftCollected = 0;
     }
 

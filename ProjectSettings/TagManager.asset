@@ -9,6 +9,7 @@ TagManager:
   - gift
   - sleigh
   - wall
+  - SantaAgent
   layers:
   - Default
   - TransparentFX
